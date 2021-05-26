@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <header>
+        <!--<div class="container">
+    <span class="nav-color">Заголовок страницы</span>
+    </div>-->
+        <!-- Панель навигации -->
+        <!-- Панель навигации -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <!-- меню сайта -->
+            <a class="navbar-brand" href="#">Cherepko</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Лб 1</a>
+                <a class="nav-item nav-link" href="#">Каталог</a>
+                <a class="nav-item nav-link" href="#">Администрирование</a>
+            </div>
+            <!-- меню сайта - конец -->
+            <!-- Информация пользователя -->
+            <a href="#" class="navbar-text ml-auto">
+                00,0 руб <i class="fas fa-shopping-cart nav-color"></i> (0)
+
+            </a>
+            <div class="dropdown ml-4 nav-color">
+                <div class="dropdown-toggle" id="dropdownMenuButton"
+                     data-toggle="dropdown" aria-haspopup="true"
+                     aria-expanded="false">
+                    <img src="images/avatar.png" width="30"
+                         alt="User" class="rounded" />
+                </div>
+                <div class="dropdown-menu"
+                     aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item-text">
+                        <img src="images/avatar.png" width="50"
+                             alt="User" class="rounded" />
+                        user@mail.ru
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Мои товары</a>
+                    <a class="dropdown-item" href="#">Log off</a>
+                </div>
+            </div>
+            <!-- Информация пользователя - конец -->
+        </nav> <!-- Панель навигации - конец -->
+    </header><!-- header - конец -->
+
+    <main class="container">
+        <h1>Лаболаторная работа 1</h1>
+        <section>
+            <h2>Список</h2>
+            <div class="list-wr flex">
+                <ol type="A">
+                    <li>элемент 1 списка</li>
+                    <li>элемент 2 списка</li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h2>Форма</h2>
+            <form action="#">
+                <div class="form-line form-checkbox-wr">
+                    <input type="checkbox" id="check1" name="check1Name"><label for="check1">Чек-бокс 1</label>
+                    <input type="checkbox" id="check2" name="check2Name"><label for="check2">Чек-бокс 2</label>
+                </div>
+                <div class="form-line form-radio-wr">
+                    <label><input type="radio" name="lab" value="Радио-1"><span>Радио-1</span></label>
+                    <label><input type="radio" name="lab" value="Радио-2"><span>Радио-2</span></label>
+                    <label><input type="radio" name="lab" value="Радио-3"><span>Радио-3</span></label>
+                </div>
+                <div class="form-line form-text-wr">
+                    <label><span>Логин:</span><input type="text" placeholder="Введите имя"></label>
+                    <label><span>Пароль:</span><input type="text" placeholder="Введите пароль"></label>
+                </div>
+                <input type="submit">
+            </form>
+        </section>
+    </main>
+
+    <footer class="fixed-bottom">
+        <div class="navbar navbar-dark navbar-expand-md bg-dark">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="http://www.facebook.com">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+                <a class="nav-item nav-link" href="http://www.vk.com">
+                    <i class="fab fa-vk fa-2x"></i>
+                </a>
+                <a class="nav-item nav-link" href="http://www.twitter.com">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
