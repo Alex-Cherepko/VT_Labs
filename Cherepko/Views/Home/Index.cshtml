@@ -4,9 +4,9 @@
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Hello World!</h2>
+<h2>@ViewData["Text"]</h2>
 
-<h1>Лаболаторная работа 2</h1>
+        <select asp-items="@ViewData["Lst"] as SelectList"></select>
         <section>
             <h2>Список</h2>
             <div class="list-wr flex">
