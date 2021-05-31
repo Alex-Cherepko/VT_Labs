@@ -1,8 +1,36 @@
 ﻿
 @{
     ViewData["Title"] = "Главная страница";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Hello World!</h2>
 
+<h1>Лаболаторная работа 2</h1>
+        <section>
+            <h2>Список</h2>
+            <div class="list-wr flex">
+                <ol type="A">
+                    @for (int i = 1; i < 5; i++) { <li>элемент @i списка</li> }
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h2>Форма</h2>
+            <form action="#">
+                <div class="form-line form-checkbox-wr">
+                    <input type="checkbox" id="check1" name="check1Name"><label for="check1">Чек-бокс 1</label>
+                    <input type="checkbox" id="check2" name="check2Name"><label for="check2">Чек-бокс 2</label>
+                </div>
+                <div class="form-line form-radio-wr">
+                    <label><input type="radio" name="lab" value="Радио-1"><span>Радио-1</span></label>
+                    <label><input type="radio" name="lab" value="Радио-2"><span>Радио-2</span></label>
+                    <label><input type="radio" name="lab" value="Радио-3"><span>Радио-3</span></label>
+                </div>
+                <div class="form-line form-text-wr">
+                    <label><span>Логин:</span><input type="text" placeholder="Введите имя"></label>
+                    <label><span>Пароль:</span><input type="text" placeholder="Введите пароль"></label>
+                </div>
+                <input type="submit">
+            </form>
+        </section>
