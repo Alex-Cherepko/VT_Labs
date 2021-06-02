@@ -20,7 +20,7 @@ namespace Cherepko.Controllers
             return View();
         }
 
-            public void FillDemoList()
+            private void FillDemoList()
             {
                 listDemo = new List<DemoList>
                 {
