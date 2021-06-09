@@ -34,8 +34,8 @@ namespace Cherepko
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
           {
@@ -53,6 +53,8 @@ namespace Cherepko
             });
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +79,8 @@ namespace Cherepko
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();

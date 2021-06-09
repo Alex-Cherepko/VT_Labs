@@ -1,0 +1,23 @@
+﻿@model Rod
+
+
+<div class="card m-2 p-1 text-center col-10">
+    <img src="~/Images/@Model.Image" class="card-img-top" alt=`NoImage`>
+    <div class="card-body">
+        <h5 class="card-title">@Model.RodName</h5>
+        <p class="card-text">@Model.Description</p>
+    </div>
+    <div class="card-text badge badge-secondary">
+        <h6>Цена @Model.Price руб.</h6>
+    </div> @{ // Получение текущего адреса
+        var request = ViewContext.HttpContext.Request;
+        var returnUrl = request.Path + request.QueryString.ToUriComponent(); }
+    <!--Разметка кнопки добавления в корзину-->
+    <p class="mt-2">
+        <a asp-action="Add"
+           asp-controller="Cart" asp-route-id="@Model.RodId" asp-route-returnUrl="@returnUrl"
+           class="btn btn-primary">
+            <i class="fa fa-shopping-cart"></i> В корзину
+        </a>
+    </p>
+</div>

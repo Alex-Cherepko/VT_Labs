@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherepko", "Cherepko\Cherepko.csproj", "{EF306123-566B-44D9-9C8C-D30BF8E8FAA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CherepkoLib", "CherepkoLib\CherepkoLib.csproj", "{06CECEBB-3F03-41F8-AD3D-8B9785B5ECA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherepkoLib", "CherepkoLib\CherepkoLib.csproj", "{06CECEBB-3F03-41F8-AD3D-8B9785B5ECA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cherepko.Tests", "Cherepko.Tests\Cherepko.Tests.csproj", "{8394449F-F4DA-4473-A152-426EB55E9F1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{06CECEBB-3F03-41F8-AD3D-8B9785B5ECA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CECEBB-3F03-41F8-AD3D-8B9785B5ECA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CECEBB-3F03-41F8-AD3D-8B9785B5ECA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8394449F-F4DA-4473-A152-426EB55E9F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8394449F-F4DA-4473-A152-426EB55E9F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8394449F-F4DA-4473-A152-426EB55E9F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8394449F-F4DA-4473-A152-426EB55E9F1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

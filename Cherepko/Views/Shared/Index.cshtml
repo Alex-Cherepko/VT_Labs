@@ -1,0 +1,107 @@
+﻿@*@model IEnumerable<Rod>*@
+@model ListViewModel<Rod>
+
+
+@{
+    ViewData["Title"] = "Меню";
+    var categories = ViewData["Groups"] as IEnumerable<RodGroup>;
+    int currentGroup = (int)ViewData["CurrentGroup"];
+    var text = currentGroup != 0
+    ? categories
+    .FirstOrDefault(g => g.RodGroupId == currentGroup)?
+    .GroupName
+    : "Все"; 
+}
+<div class="row">
+    <div class="col-2">
+        <div class="dropdown mt-2">
+            <a class="btn btn-secondary dropdown-toggle"
+               asp-action="Index" asp-controller="Product"
+               role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                @text
+            </a>
+            <div class="dropdown-menu"
+                 aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item"
+                   asp-action="Index"
+                   asp-controller="Product">Все</a>
+                @foreach (var item in categories)
+                {
+                    <a class="dropdown-item"
+                       asp-action="Index"
+                       asp-controller="Product" asp-route-group="@item.RodGroupId"
+                       asp-route-pageNo="1">@item.GroupName</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <partial name="_ListItemPartial" model="@item" />
+
+        }
+    </div>
+</div>
+    @*<h1>Index</h1>*@
+
+    @*<p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RodId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RodName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RodGroupId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RodId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RodName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RodGroupId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>*@
