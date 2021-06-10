@@ -11,6 +11,8 @@ namespace CherepkoLib.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Rod> Rods { get; set; }
+        public DbSet<RodGroup> RodGroups { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
               : base(options)
         {

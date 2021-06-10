@@ -1,4 +1,5 @@
-﻿using CherepkoLib.Entities;
+﻿using CherepkoLib.Data;
+using CherepkoLib.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,19 @@ namespace Cherepko.Tests
             yield return new object[] { 2, 2, 4 };
         }
 
+        public static void FillContext(ApplicationDbContext context)
+        {
+            context.RodGroups.Add(new RodGroup
+            { GroupName = "fake group" });
+            context.AddRange(new List<Rod>
+            {
+            new Rod{ RodId=1, RodGroupId=1},
+            new Rod{ RodId=2, RodGroupId=1},
+            new Rod{ RodId=3, RodGroupId=2},
+            new Rod{ RodId=4, RodGroupId=2},
+            new Rod{ RodId=5, RodGroupId=3}
+            });
+            context.SaveChanges();
+        }
     }
 }
