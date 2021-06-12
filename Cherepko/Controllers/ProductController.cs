@@ -3,6 +3,7 @@ using Cherepko.Models;
 using CherepkoLib.Data;
 using CherepkoLib.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,15 @@ namespace Cherepko.Controllers
         //List<RodGroup> rodGroups;
         ApplicationDbContext context;
         int pageSize;
+        //private ILogger logger;
 
         public ProductController(ApplicationDbContext Context)
+        //public ProductController(ApplicationDbContext Context,
+        //   ILogger<ProductController> Logger)
         {
             pageSize = 3;
             context = Context;
+           // logger = Logger;
             //SetupData();
         }
 
@@ -28,6 +33,8 @@ namespace Cherepko.Controllers
         [Route("Catalog/Page_{pageNo}")]
         public IActionResult Index(int? group, int pageNo = 1)
         {
+            //logger.LogInformation($"info: group={group}, page={pageNo}");
+
             //var items = rods
             //.Skip((pageNo - 1) * pageSize)
             //.Take(pageSize)

@@ -1,0 +1,37 @@
+﻿@using Cherepko.Blazor.Data
+<h3>RodsList</h3>
+
+@if (Rods == null)
+{
+    <p>Загрузка ...</p>
+}
+else
+{
+    <div class="list-group">
+        @{
+            var i = 1;
+            foreach (var rod in Rods)
+            {
+                <button type="button" class="list-group-item list-group-item-action
+                    @(SelectedId == rod.RodId ? "active" : "")"
+                    @onclick="@(e => Selected(e, rod.RodId))">
+                    @(i++) - @rod.RodName
+                </button>
+            } }
+    </div>
+}
+@code {
+    [Parameter]
+    public IEnumerable<ListViewModel> Rods { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<ListViewModel>> RodsChanged { get; set; }
+
+    private int SelectedId = 0;
+    [Parameter]
+    public EventCallback<int> SelectedObjectChanged { get; set; }
+    private void Selected(MouseEventArgs e, int id)
+    {
+        SelectedId = id;
+        SelectedObjectChanged.InvokeAsync(id);
+    }
+}

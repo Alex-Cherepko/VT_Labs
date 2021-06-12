@@ -1,0 +1,30 @@
+﻿@using Cherepko.Blazor.Data;
+@using Cherepko.Blazor.Components;
+
+
+@page "/apidemo"
+@inject HttpClient client
+
+<div class="container">
+    <RodsList @bind-Rods="rods"
+              SelectedObjectChanged="ShowDetails"></RodsList>
+    <RodDetails @bind-Food="SelectedRod"></RodDetails>
+</div>
+@code
+ {
+    [Parameter]
+    public IEnumerable<ListViewModel> rods { get; set; }
+    string apiBaseAddress = "https://localhost:44342/Api/Rods";
+    protected override async Task OnInitializedAsync()
+    {
+        rods = await client.GetFromJsonAsync<IEnumerable<ListViewModel>>(apiBaseAddress);
+    }
+
+    [Parameter]
+    public DetailsViewModel SelectedRod { get; set; }
+    private async Task ShowDetails(int id)
+    {
+        SelectedRod =
+        await client.GetFromJsonAsync<DetailsViewModel>(apiBaseAddress + $"/{id}");
+    }
+}

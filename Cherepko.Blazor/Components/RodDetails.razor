@@ -1,0 +1,25 @@
+﻿@using Cherepko.Blazor.Data
+
+<h3>RodDetails</h3>
+
+@if (Rod != null)
+{
+    <img src="@imageSrc" class="img-thumbnail" width="150" />
+    <div>
+        <p>@Rod.RodName - @Rod.Description</p> <div class="badge badge-info ">@Rod.Price руб.</div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public DetailsViewModel Rod { get; set; }
+    [Parameter]
+    public EventCallback<DetailsViewModel> RodChanged { get; set; }
+    string imageSrc
+    {
+        get
+        {
+            return $"https://localhost:44342/images/{Rod.Image}";
+        }
+    }
+}

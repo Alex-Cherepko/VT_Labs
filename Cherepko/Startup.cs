@@ -1,3 +1,4 @@
+using Cherepko.Extensions;
 using Cherepko.Models;
 using Cherepko.Services;
 using CherepkoLib.Data;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,8 +76,10 @@ namespace Cherepko
             IWebHostEnvironment env,
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            ILoggerFactory logger)
         {
+            logger.AddFile("Logs/log-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -97,6 +101,7 @@ namespace Cherepko
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
+            app.UseFileLogging();
 
             DbInitializer.Seed(context, userManager, roleManager).GetAwaiter().GetResult();
 
