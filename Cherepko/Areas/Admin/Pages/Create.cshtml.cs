@@ -5,33 +5,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using _90331_ElenaPlotnikova.DAL.Data;
-using _90331_ElenaPlotnikova.DAL.Entities;
+using CherepkoLib.Data;
+using CherepkoLib.Entities;
 using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.IO;
 
-namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
+namespace Cherepko.Areas.Admin.Pages
 {
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment environment;
 
         public CreateModel(ApplicationDbContext context, IWebHostEnvironment env)
         {
             _context = context;
-            _environment = env;
+            environment = env;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["FoodGroupId"] = new SelectList(_context.FoodGroups, "FoodGroupId", "GroupName");
+        ViewData["RodGroupId"] = new SelectList(_context.RodGroups, "RodGroupId", "GroupName");
             return Page();
         }
 
         [BindProperty]
-        public Food Food { get; set; }
+        public Rod Rod { get; set; }
         [BindProperty]
         public IFormFile Image { get; set; }
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -42,19 +42,21 @@ namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
                 return Page();
             }
 
-            _context.Foods.Add(Food);
+            _context.Rods.Add(Rod);
             await _context.SaveChangesAsync();
+
             if (Image != null)
             {
-                var fileName = $"{Food.FoodId}" + Path.GetExtension(Image.FileName);
-                Food.Image = fileName;
-                var path = Path.Combine(_environment.WebRootPath, "Images", fileName);
+                var fileName = $"{Rod.RodId}" + Path.GetExtension(Image.FileName);
+                Rod.Image = fileName;
+                var path = Path.Combine(environment.WebRootPath, "Images", fileName);
                 using (var fStream = new FileStream(path, FileMode.Create))
                 {
                     await Image.CopyToAsync(fStream);
                 }
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToPage("./Index");
         }
     }

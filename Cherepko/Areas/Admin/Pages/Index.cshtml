@@ -1,45 +1,51 @@
 ﻿@page
-@model _90331_ElenaPlotnikova.Areas.Admin.Pages.IndexModel
+@model Cherepko.Areas.Admin.Pages.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Редактирование</h1>
 
 <p class="mt-2">
     <a asp-page="Create" class="btn btn-outline-info">
-        <span class="fa fa-plus-circle"> Добавить</span>
+        <span class="fa fa-plus-circle">Добавить</span>
     </a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].FoodName)
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Rod[0].RodName)*@
+                Наименование
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Description)
+                @*@Html.DisplayNameFor(model => model.Rod[0].Description)*@
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Price)
+                @*@Html.DisplayNameFor(model => model.Rod[0].Price)*@
+                Цена
             </th>
-            
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Group)
+                @*@Html.DisplayNameFor(model => model.Rod[0].Group)*@
+                Категория
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Food) {
+@foreach (var item in Model.Rod) {
         <tr>
             <td>
                 <img src="~/Images/@item.Image" alt="NoImage" width="50" />
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FoodName)
+                @Html.DisplayFor(modelItem => item.RodName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -47,18 +53,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            
             <td>
-                @Html.DisplayFor(modelItem => item.Group.FoodGroupId)
+                @Html.DisplayFor(modelItem => item.Group.RodGroupId)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.FoodId"
-                class="btn btn-outline-info">
-                <span class="fas fa-edit"></span>
-                </a> 
-                <a asp-page="./Delete" asp-route-id="@item.FoodId"
-                class="btn btn-outline-danger">
-                <span class="fas fa-trash-alt"></span>
+                <a asp-page="./Edit" asp-route-id="@item.RodId"
+                   class="btn btn-outline-info">
+                    <span class="fas fa-edit"></span>
+                </a> <a asp-page="./Delete" asp-route-id="@item.RodId"
+                        class="btn btn-outline-danger">
+                    <span class="fas fa-trash-alt"></span>
                 </a>
             </td>
         </tr>

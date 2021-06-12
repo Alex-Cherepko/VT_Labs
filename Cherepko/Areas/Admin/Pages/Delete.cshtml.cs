@@ -5,22 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using _90331_ElenaPlotnikova.DAL.Data;
-using _90331_ElenaPlotnikova.DAL.Entities;
+using CherepkoLib.Data;
+using CherepkoLib.Entities;
 
-namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
+namespace Cherepko.Areas.Admin.Pages
 {
     public class DeleteModel : PageModel
     {
-        private readonly _90331_ElenaPlotnikova.DAL.Data.ApplicationDbContext _context;
+        private readonly CherepkoLib.Data.ApplicationDbContext _context;
 
-        public DeleteModel(_90331_ElenaPlotnikova.DAL.Data.ApplicationDbContext context)
+        public DeleteModel(CherepkoLib.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Food Food { get; set; }
+        public Rod Rod { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,10 @@ namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
                 return NotFound();
             }
 
-            Food = await _context.Foods
-                .Include(f => f.Group).FirstOrDefaultAsync(m => m.FoodId == id);
+            Rod = await _context.Rods
+                .Include(r => r.Group).FirstOrDefaultAsync(m => m.RodId == id);
 
-            if (Food == null)
+            if (Rod == null)
             {
                 return NotFound();
             }
@@ -46,11 +46,11 @@ namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
                 return NotFound();
             }
 
-            Food = await _context.Foods.FindAsync(id);
+            Rod = await _context.Rods.FindAsync(id);
 
-            if (Food != null)
+            if (Rod != null)
             {
-                _context.Foods.Remove(Food);
+                _context.Rods.Remove(Rod);
                 await _context.SaveChangesAsync();
             }
 

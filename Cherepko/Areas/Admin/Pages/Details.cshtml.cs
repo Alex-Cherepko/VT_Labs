@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using _90331_ElenaPlotnikova.DAL.Data;
-using _90331_ElenaPlotnikova.DAL.Entities;
+using CherepkoLib.Data;
+using CherepkoLib.Entities;
 
-namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
+namespace Cherepko.Areas.Admin.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly _90331_ElenaPlotnikova.DAL.Data.ApplicationDbContext _context;
+        private readonly CherepkoLib.Data.ApplicationDbContext _context;
 
-        public DetailsModel(_90331_ElenaPlotnikova.DAL.Data.ApplicationDbContext context)
+        public DetailsModel(CherepkoLib.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public Food Food { get; set; }
+        public Rod Rod { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,10 +28,10 @@ namespace _90331_ElenaPlotnikova.Areas.Admin.Pages
                 return NotFound();
             }
 
-            Food = await _context.Foods
-                .Include(f => f.Group).FirstOrDefaultAsync(m => m.FoodId == id);
+            Rod = await _context.Rods
+                .Include(r => r.Group).FirstOrDefaultAsync(m => m.RodId == id);
 
-            if (Food == null)
+            if (Rod == null)
             {
                 return NotFound();
             }

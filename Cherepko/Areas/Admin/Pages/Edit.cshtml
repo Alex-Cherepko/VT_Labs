@@ -1,5 +1,5 @@
 ﻿@page "{id:int}"
-@model _90331_ElenaPlotnikova.Areas.Admin.Pages.EditModel
+@model Cherepko.Areas.Admin.Pages.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,31 +7,31 @@
 
 <h1>Edit</h1>
 
-<h4>Food</h4>
+<h4>Rod</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Food.FoodId" />
+            <input type="hidden" asp-for="Rod.RodId" />
             <div class="form-group">
-                <label asp-for="Food.FoodName" class="control-label"></label>
-                <input asp-for="Food.FoodName" class="form-control" />
-                <span asp-validation-for="Food.FoodName" class="text-danger"></span>
+                <label asp-for="Rod.RodName" class="control-label"></label>
+                <input asp-for="Rod.RodName" class="form-control" />
+                <span asp-validation-for="Rod.RodName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Food.Description" class="control-label"></label>
-                <input asp-for="Food.Description" class="form-control" />
-                <span asp-validation-for="Food.Description" class="text-danger"></span>
+                <label asp-for="Rod.Description" class="control-label"></label>
+                <input asp-for="Rod.Description" class="form-control" />
+                <span asp-validation-for="Rod.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Food.Price" class="control-label"></label>
-                <input asp-for="Food.Price" class="form-control" />
-                <span asp-validation-for="Food.Price" class="text-danger"></span>
+                <label asp-for="Rod.Price" class="control-label"></label>
+                <input asp-for="Rod.Price" class="form-control" />
+                <span asp-validation-for="Rod.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @if (!string.IsNullOrEmpty(Model.Food.Image))
-                {<img src=~/Images/@Model.Food.Image
+                @if (!string.IsNullOrEmpty(Model.Rod.Image))
+                {<img src=~/Images/@Model.Rod.Image
                       alt="NoSuchFile" width="150" />
                 }
                 else
@@ -46,15 +46,15 @@
                     </label>
                 </div>
             </div>
-                <div class="form-group">
-                    <label asp-for="Food.FoodGroupId" class="control-label"></label>
-                    <select asp-for="Food.FoodGroupId" class="form-control" asp-items="ViewBag.FoodGroupId"></select>
-                    <span asp-validation-for="Food.FoodGroupId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-</form>
+            <div class="form-group">
+                <label asp-for="Rod.RodGroupId" class="control-label"></label>
+                <select asp-for="Rod.RodGroupId" class="form-control" asp-items="ViewBag.RodGroupId"></select>
+                <span asp-validation-for="Rod.RodGroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
 
@@ -67,3 +67,4 @@
     <script>
 bsCustomFileInput.init();
     </script> }
+
